@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Cameron | Forest City Honda</title>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet"/>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --red:#0077C8;
+  --red-dark:#00518C;
+  --black:#0A0A0A;
+  --charcoal:#1A1A1A;
+  --white:#FFFFFF;
+  --silver:#C9CCD1;
+  --steel:#5A5F66;
+}
+body{font-family:'Inter',sans-serif;background:var(--white);color:var(--black)}
+a{text-decoration:none}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:99;background:var(--black);border-bottom:3px solid var(--red);display:flex;align-items:center;justify-content:space-between;padding:0 20px;height:60px}
+.nav-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:900;letter-spacing:1px;color:var(--white)}
+.nav-name span{color:var(--red)}
+.nav-btn{background:var(--red);color:var(--white);padding:9px 16px;border-radius:2px;font-weight:800;font-size:13px;text-transform:uppercase;letter-spacing:0.5px}
+
+/* HERO — black with a diagonal red racing stripe, Honda motorsport signature */
+.hero{margin-top:60px;position:relative;background:var(--black);padding:70px 24px 0;text-align:center;overflow:hidden;color:var(--white)}
+.hero::before{
+  content:'';position:absolute;top:-20%;right:-30%;width:140%;height:160%;
+  background:linear-gradient(115deg, transparent 46%, var(--red) 46%, var(--red) 52%, var(--red-dark) 52%, var(--red-dark) 56%, transparent 56%);
+  opacity:0.9;pointer-events:none;
+}
+.hero-inner{position:relative;z-index:2}
+.hero-tag{font-size:12px;font-weight:800;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:14px}
+.hero h1{font-family:'Barlow Condensed',sans-serif;font-size:clamp(52px,14vw,96px);font-weight:900;line-height:0.88;text-transform:uppercase;margin-bottom:16px;letter-spacing:-1px}
+.hero h1 em{color:var(--red);font-style:normal;display:block;-webkit-text-stroke:1px var(--white)}
+.hero p{color:rgba(255,255,255,0.75);font-size:15px;line-height:1.6;max-width:400px;margin:0 auto 28px}
+.hero-btns{display:flex;flex-direction:column;gap:12px;align-items:center;padding-bottom:44px}
+.btn-red{background:var(--red);color:var(--white);padding:15px 32px;border-radius:2px;font-weight:800;font-size:15px;display:inline-block;width:100%;max-width:320px;text-align:center;text-transform:uppercase;letter-spacing:0.5px;box-shadow:0 6px 20px rgba(0,119,200,0.35);transition:transform .15s}
+.btn-red:hover{transform:translateY(-2px)}
+.btn-outline{background:transparent;color:var(--white);padding:14px 32px;border-radius:2px;border:2px solid rgba(255,255,255,0.4);font-weight:800;font-size:15px;display:inline-block;width:100%;max-width:320px;text-align:center;text-transform:uppercase;letter-spacing:0.5px}
+.btn-outline:hover{border-color:var(--red);color:var(--red)}
+
+.stats{display:grid;grid-template-columns:1fr 1fr;background:var(--red);clip-path:polygon(0 12px,100% 0,100% 100%,0 100%)}
+.stat{padding:24px 20px 20px;text-align:center;border-right:1px solid rgba(255,255,255,0.25);border-bottom:1px solid rgba(255,255,255,0.25)}
+.stat-num{font-family:'Barlow Condensed',sans-serif;font-size:36px;font-weight:900;color:var(--white)}
+.stat-label{font-size:11px;opacity:0.9;text-transform:uppercase;letter-spacing:1px;margin-top:2px;color:var(--white)}
+
+.section{padding:60px 24px;max-width:640px;margin:0 auto;background:var(--white)}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:3px;color:var(--red);text-transform:uppercase;margin-bottom:10px}
+.section h2{font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,10vw,56px);font-weight:900;text-transform:uppercase;line-height:0.95;margin-bottom:14px;color:var(--black)}
+.section p{color:var(--steel);font-size:15px;line-height:1.7;margin-bottom:28px}
+.perks{display:flex;flex-direction:column;gap:14px}
+.perk{display:flex;align-items:flex-start;gap:14px;background:#F7F7F8;border-left:3px solid var(--red);border-radius:0 8px 8px 0;padding:16px}
+.perk-icon{font-size:22px;flex-shrink:0}
+.perk strong{display:block;font-size:15px;font-weight:800;margin-bottom:3px;color:var(--black)}
+.perk span{font-size:13px;color:var(--steel)}
+
+/* INVENTORY — black section */
+.inv-section{background:var(--black);padding:60px 24px;position:relative}
+.inv-inner{max-width:640px;margin:0 auto}
+.inv-inner .eyebrow{color:var(--red)}
+.inv-inner h2{color:var(--white)}
+.inv-inner>p{color:rgba(255,255,255,0.55) !important}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.f-btn{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.7);padding:8px 16px;border-radius:2px;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;text-transform:uppercase;letter-spacing:0.5px}
+.f-btn.on{background:var(--red);border-color:var(--red);color:var(--white)}
+.inv-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:28px}
+.inv-card{background:var(--charcoal);border:1px solid rgba(255,255,255,0.08);border-top:3px solid transparent;border-radius:0 0 8px 8px;padding:14px;transition:border-color .2s,transform .15s}
+.inv-card:hover{border-top-color:var(--red);transform:translateY(-2px)}
+.badge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:2px 7px;border-radius:2px;margin-bottom:8px}
+.b-new{background:var(--red);color:var(--white)}
+.b-cpo{background:var(--silver);color:var(--black)}
+.b-used{background:rgba(255,255,255,0.07);color:rgba(255,255,255,0.55);border:1px solid rgba(255,255,255,0.15)}
+.inv-yr{font-size:11px;color:rgba(255,255,255,0.4);font-weight:700;letter-spacing:1px}
+.inv-name{font-family:'Barlow Condensed',sans-serif;font-size:20px;font-weight:800;text-transform:uppercase;line-height:1.1;margin:2px 0 4px;color:var(--white)}
+.inv-trim{font-size:11px;color:rgba(255,255,255,0.45);margin-bottom:8px}
+.inv-miles{font-size:12px;color:rgba(255,255,255,0.55)}
+.inv-link{display:block;margin-top:10px;text-align:center;background:transparent;border:1px solid rgba(255,255,255,0.15);color:rgba(255,255,255,0.65);padding:7px;border-radius:2px;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.5px}
+.inv-link:hover{background:var(--red);border-color:var(--red);color:var(--white)}
+.view-all{display:block;text-align:center;background:var(--red);color:var(--white);padding:15px 32px;border-radius:2px;font-weight:800;font-size:15px;text-transform:uppercase;letter-spacing:0.5px;max-width:320px;margin:0 auto;box-shadow:0 6px 20px rgba(0,119,200,0.3)}
+
+.form-section{padding:60px 24px;max-width:640px;margin:0 auto;background:var(--white)}
+.form-box{background:var(--black);border-radius:10px;padding:28px;border-top:4px solid var(--red)}
+.form-box .form-row label{color:rgba(255,255,255,0.55)}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+.form-group{display:flex;flex-direction:column;gap:5px}
+.form-group.full{grid-column:1/-1}
+label{font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:0.5px;color:var(--steel)}
+input,select,textarea{background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:var(--white);padding:11px 12px;border-radius:4px;font-size:14px;font-family:inherit;outline:none}
+input::placeholder,textarea::placeholder{color:rgba(255,255,255,0.35)}
+input:focus,select:focus,textarea:focus{border-color:var(--red)}
+select option{background:var(--black)}
+textarea{resize:vertical;min-height:80px}
+.submit-btn{width:100%;background:var(--red);color:var(--white);border:none;padding:16px;border-radius:2px;font-size:16px;font-weight:800;cursor:pointer;font-family:'Barlow Condensed',sans-serif;letter-spacing:1px;text-transform:uppercase;margin-top:8px;box-shadow:0 6px 20px rgba(0,119,200,0.35)}
+.success{display:none;text-align:center;padding:28px}
+.success .ck{font-size:48px;margin-bottom:12px}
+.success h3{font-family:'Barlow Condensed',sans-serif;font-size:28px;font-weight:900;color:var(--white)}
+.success p{color:rgba(255,255,255,0.6);margin-top:8px;font-size:14px}
+
+.chat-wrap{background:var(--black);padding:60px 24px}
+.chat-wrap .eyebrow{color:var(--red)}
+.chat-wrap h2{color:var(--white)}
+.chat-wrap>div>p{color:rgba(255,255,255,0.55)}
+.chat-box{max-width:580px;margin:0 auto;background:var(--charcoal);border-radius:10px;overflow:hidden;border:1px solid rgba(255,255,255,0.08)}
+.chat-head{background:#111;padding:14px 18px;display:flex;align-items:center;gap:10px;border-bottom:2px solid var(--red)}
+.chat-av{width:36px;height:36px;border-radius:50%;background:var(--red);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0;color:var(--white)}
+.chat-info strong{display:block;font-size:14px;font-weight:700;color:var(--white)}
+.chat-info span{font-size:11px;color:rgba(255,255,255,0.45)}
+.online{margin-left:auto;background:rgba(255,255,255,0.08);color:#8ee08e;padding:3px 10px;border-radius:20px;font-size:11px;font-weight:700}
+.chat-msgs{height:280px;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:80%;padding:10px 13px;border-radius:12px;font-size:14px;line-height:1.5}
+.msg.a{background:#111;color:var(--white);border-radius:0 12px 12px 12px;align-self:flex-start}
+.msg.u{background:var(--red);color:var(--white);border-radius:12px 0 12px 12px;align-self:flex-end}
+.chat-foot{display:flex;gap:8px;padding:12px;border-top:1px solid rgba(255,255,255,0.08)}
+.chat-in{flex:1;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.15);color:var(--white);padding:10px 14px;border-radius:20px;font-size:13px;font-family:inherit;outline:none}
+.chat-in:focus{border-color:var(--red)}
+.chat-send{background:var(--red);color:var(--white);border:none;border-radius:20px;padding:10px 18px;font-weight:700;font-size:13px;cursor:pointer;font-family:inherit}
+
+footer{background:var(--black);border-top:3px solid var(--red);padding:28px 24px;text-align:center;font-size:13px;color:rgba(255,255,255,0.45)}
+footer strong{color:var(--white)}
+footer a{color:var(--red)}
+
+@media(max-width:400px){.inv-grid{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-name">FOREST CITY <span>HONDA</span></div>
+  <a href="#contact" class="nav-btn">Get My Deal</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-tag">Forest City, NC · Ask for Cameron</div>
+    <h1>Drive More.<em>Pay Less.</em></h1>
+    <p>I'm Cameron, your personal sales consultant at Forest City Honda. I'll find you the right car at the right price — no pressure, no games. Call or text me anytime.</p>
+    <div class="hero-btns">
+      <a href="tel:8287442906" class="btn-red">📞 Call Cameron: (828) 744-2906</a>
+      <a href="#inventory" class="btn-outline">Browse Inventory ↓</a>
+    </div>
+  </div>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-num">60+</div><div class="stat-label">Cars In Stock</div></div>
+  <div class="stat"><div class="stat-num">$0</div><div class="stat-label">Pressure Tactics</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Days a Week</div></div>
+  <div class="stat"><div class="stat-num">All</div><div class="stat-label">Credit Welcome</div></div>
+</div>
+
+<section class="section" id="about">
+  <div class="eyebrow">Why Work With Me</div>
+  <h2>Your Deal,<br/>My Priority</h2>
+  <p>I'm not just another salesperson — I work for you. My job is finding the right vehicle at the right payment and making the whole process easy.</p>
+  <div class="perks">
+    <div class="perk"><div class="perk-icon">🚗</div><div><strong>New & Used Inventory</strong><span>Honda certified and pre-owned vehicles across all budgets</span></div></div>
+    <div class="perk"><div class="perk-icon">💳</div><div><strong>All Credit Types Welcome</strong><span>Good credit, bad credit, first-time buyers — we make it work</span></div></div>
+    <div class="perk"><div class="perk-icon">📞</div><div><strong>Direct Line to Cameron</strong><span>Text or call me personally — no phone trees, no runaround</span></div></div>
+    <div class="perk"><div class="perk-icon">🤝</div><div><strong>Zero Pressure Experience</strong><span>Come in, look around, test drive — zero obligation</span></div></div>
+  </div>
+</section>
+
+<div class="inv-section" id="inventory">
+  <div class="inv-inner">
+    <div class="eyebrow">What We Have</div>
+    <h2>Current Inventory</h2>
+    <p>Tap any vehicle to view full details on our site or call Cameron directly.</p>
+    <div class="filter-row">
+      <button class="f-btn on" onclick="filt('all',this)">All</button>
+      <button class="f-btn" onclick="filt('New',this)">New Honda</button>
+      <button class="f-btn" onclick="filt('Certified Pre-Owned',this)">CPO</button>
+      <button class="f-btn" onclick="filt('Used',this)">Used</button>
+    </div>
+    <div class="inv-grid" id="ig"></div>
+    <a href="https://www.forestcityhondanc.com/inventory" target="_blank" class="view-all">View Full Inventory →</a>
+  </div>
+</div>
+
+<div class="form-section" id="contact">
+  <div class="eyebrow">Get In Touch</div>
+  <h2>Ready to Find<br/>Your Car?</h2>
+  <p style="color:var(--steel);margin-bottom:24px">Fill this out and Cameron will personally reach out — usually within the hour.</p>
+  <div class="form-box">
+    <form id="fb" action="https://formspree.io/clowery@marburgerauto.com" method="POST">
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input id="fn" name="First Name" placeholder="John" required/></div>
+        <div class="form-group"><label>Last Name</label><input id="ln" name="Last Name" placeholder="Smith"/></div>
+        <div class="form-group"><label>Phone</label><input id="ph" name="Phone" placeholder="(828) 555-1234" type="tel" required/></div>
+        <div class="form-group"><label>Email</label><input id="em" name="Email" placeholder="john@email.com" type="email"/></div>
+        <div class="form-group full"><label>Looking For</label>
+          <select id="int" name="Looking For">
+            <option value="">Select...</option>
+            <option>New Honda</option><option>Used Vehicle</option>
+            <option>Certified Pre-Owned Honda</option><option>Trade-In + Purchase</option>
+          </select>
+        </div>
+        <div class="form-group full"><label>Message (optional)</label><textarea id="msg" name="Message" placeholder="Tell Cameron your budget, what you're looking for, or any questions..."></textarea></div>
+      </div>
+      <input type="hidden" name="_subject" value="New lead from Forest City Honda site"/>
+      <input type="hidden" name="_cc" value="8287442906@tmomail.net"/>
+      <button class="submit-btn" type="submit">SEND TO CAMERON →</button>
+    </form>
+    <div class="success" id="fs">
+      <div class="ck">✅</div>
+      <h3>Cameron Got It!</h3>
+      <p>He'll reach out to you shortly.<br/>Or call/text him directly:<br/><strong style="color:var(--red)">(828) 744-2906</strong></p>
+    </div>
+  </div>
+</div>
+
+<div class="chat-wrap" id="chat">
+  <div style="max-width:640px;margin:0 auto 28px">
+    <div class="eyebrow">Available 24/7</div>
+    <h2 style="font-family:'Barlow Condensed',sans-serif;font-size:clamp(36px,10vw,56px);font-weight:900;text-transform:uppercase;line-height:1;margin-bottom:10px">Ask Aria</h2>
+    <p style="font-size:15px">Quick question? Aria answers 24/7. Cameron follows up personally on serious inquiries.</p>
+  </div>
+  <div class="chat-box">
+    <div class="chat-head">
+      <div class="chat-av">A</div>
+      <div class="chat-info"><strong>Aria — Forest City Honda</strong><span>AI Sales Assistant</span></div>
+      <div class="online">🟢 Online</div>
+    </div>
+    <div class="chat-msgs" id="cm">
+      <div class="msg a">Hey! 👋 I'm Aria, Cameron's assistant at Forest City Honda. Looking for a new ride? I can help you find the perfect vehicle or answer any questions. What can I help you with?</div>
+    </div>
+    <div class="chat-foot">
+      <input class="chat-in" id="ci" placeholder="Ask about a car, financing, availability..." onkeydown="if(event.key==='Enter')sc()"/>
+      <button class="chat-send" onclick="sc()">Send</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  <div style="margin-bottom:6px"><strong>Forest City Honda</strong> · Sales Consultant: <strong>Cameron</strong></div>
+  <div><a href="tel:8287442906">(828) 744-2906</a> · <a href="https://www.forestcityhondanc.com" target="_blank">forestcityhondanc.com</a></div>
+  <div style="margin-top:14px;font-size:11px;opacity:0.5">Personal sales page for Cameron · All inventory subject to availability</div>
+</footer>
+
+<script>
+const INV=[
+  {y:"2026",mk:"Honda",mo:"Civic Hatchback",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Civic Hatchback Hybrid",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Civic Sedan",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Civic Sedan Hybrid",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Civic Type R",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Accord Sedan",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Accord Hybrid",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"CR-V",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"CR-V Hybrid",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"HR-V",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Passport",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Pilot",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Odyssey",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"Ridgeline",tr:"",mi:"New",c:"New"},
+  {y:"2027",mk:"Honda",mo:"HR-V",tr:"",mi:"New",c:"New"},
+  {y:"2025",mk:"Honda",mo:"Accord Sedan",tr:"",mi:"New",c:"New"},
+  {y:"2025",mk:"Honda",mo:"Ridgeline",tr:"",mi:"New",c:"New"},
+  {y:"2026",mk:"Honda",mo:"CR-V Hybrid",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2026",mk:"Honda",mo:"Odyssey",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2026",mk:"Honda",mo:"Civic Sedan Hybrid",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2025",mk:"Honda",mo:"Accord Hybrid",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2025",mk:"Honda",mo:"Civic Hatchback",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2025",mk:"Honda",mo:"Civic Sedan Hybrid",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2025",mk:"Honda",mo:"Pilot",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2023",mk:"Honda",mo:"HR-V",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2023",mk:"Honda",mo:"Ridgeline",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2023",mk:"Honda",mo:"Odyssey",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2022",mk:"Honda",mo:"CR-V",tr:"",mi:"CPO",c:"Certified Pre-Owned"},
+  {y:"2026",mk:"Honda",mo:"CR-V",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2026",mk:"Honda",mo:"Civic Sedan Hybrid",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2025",mk:"Honda",mo:"Pilot",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2025",mk:"Honda",mo:"Passport",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2025",mk:"Chevrolet",mo:"Suburban",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2025",mk:"Chevrolet",mo:"Silverado 1500",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2025",mk:"Mercedes-Benz",mo:"CLA",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2025",mk:"Toyota",mo:"Camry",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2025",mk:"Hyundai",mo:"Palisade",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2025",mk:"Jeep",mo:"Wrangler 4xe",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Honda",mo:"Accord Sedan",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Honda",mo:"Accord Hybrid",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Honda",mo:"Civic Sedan",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Audi",mo:"Q5",tr:"S line Premium Plus",mi:"60k mi",c:"Used"},
+  {y:"2024",mk:"Chevrolet",mo:"Equinox",tr:"LT",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Chevrolet",mo:"Malibu",tr:"LT",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Chrysler",mo:"Pacifica",tr:"Touring L",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Dodge",mo:"Durango",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Ford",mo:"Edge",tr:"Titanium",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Jeep",mo:"Compass",tr:"Latitude",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Mazda",mo:"CX-5",tr:"2.5 S Select",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Nissan",mo:"Sentra",tr:"SV",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Toyota",mo:"Camry",tr:"XSE",mi:"Low miles",c:"Used"},
+  {y:"2024",mk:"Toyota",mo:"Tacoma 2WD",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2023",mk:"Honda",mo:"Accord Hybrid",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2023",mk:"Nissan",mo:"Frontier",tr:"SV",mi:"47k mi",c:"Used"},
+  {y:"2023",mk:"Toyota",mo:"Highlander",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2022",mk:"RAM",mo:"2500",tr:"Tradesman",mi:"137k mi",c:"Used"},
+  {y:"2022",mk:"Toyota",mo:"Highlander",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2021",mk:"Ford",mo:"Explorer",tr:"XLT",mi:"51k mi",c:"Used"},
+  {y:"2020",mk:"Jeep",mo:"Gladiator",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2020",mk:"Mercedes-Benz",mo:"Sprinter Cargo",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2019",mk:"Honda",mo:"Pilot",tr:"",mi:"Low miles",c:"Used"},
+  {y:"2014",mk:"Buick",mo:"Enclave",tr:"",mi:"Low miles",c:"Used"},
+];
+
+function bc(c){return c==='New'?'b-new':c==='Certified Pre-Owned'?'b-cpo':'b-used';}
+function bl(c){return c==='New'?'NEW':c==='Certified Pre-Owned'?'CERTIFIED':'USED';}
+
+function render(f){
+  const g=document.getElementById('ig');
+  const cars=f==='all'?INV:INV.filter(v=>v.c===f);
+  g.innerHTML=cars.map(v=>`
+    <div class="inv-card">
+      <span class="badge ${bc(v.c)}">${bl(v.c)}</span>
+      <div class="inv-yr">${v.y} · ${v.mk}</div>
+      <div class="inv-name">${v.mo}</div>
+      ${v.tr?`<div class="inv-trim">${v.tr}</div>`:''}
+      <div class="inv-miles">📍 ${v.mi}</div>
+      <a class="inv-link" href="https://www.forestcityhondanc.com/inventory" target="_blank">View Details →</a>
+    </div>`).join('');
+}
+
+function filt(v,btn){
+  document.querySelectorAll('.f-btn').forEach(b=>b.classList.remove('on'));
+  btn.classList.add('on');
+  render(v);
+}
+
+render('all');
+
+document.getElementById('fb').addEventListener('submit', function(e){
+  e.preventDefault();
+  const form=e.target;
+  if(!document.getElementById('fn').value||!document.getElementById('ph').value){
+    alert('Please enter your name and phone number!');return;
+  }
+  const btn=form.querySelector('.submit-btn');
+  btn.disabled=true;btn.textContent='SENDING...';
+  fetch(form.action,{
+    method:'POST',
+    body:new FormData(form),
+    headers:{'Accept':'application/json'}
+  }).then(r=>{
+    if(r.ok){
+      form.style.display='none';
+      document.getElementById('fs').style.display='block';
+    } else {
+      alert('Something went wrong sending that — please call/text Cameron at (828) 744-2906 instead.');
+      btn.disabled=false;btn.textContent='SEND TO CAMERON →';
+    }
+  }).catch(()=>{
+    alert('Something went wrong sending that — please call/text Cameron at (828) 744-2906 instead.');
+    btn.disabled=false;btn.textContent='SEND TO CAMERON →';
+  });
+});
+
+const chatMem={model:null,askedPricingOnce:false};
+
+const MODELS=['civic type r','civic hatchback','civic sedan','civic','accord hybrid','accord',
+'cr-v hybrid','cr-v','crv','hr-v','hrv','pilot','passport','odyssey','ridgeline'];
+
+function detectModel(t){
+  for(const m of MODELS){ if(t.includes(m)) return m.replace(/\b\w/g,c=>c.toUpperCase()); }
+  return null;
+}
+
+function pick(arr){ return arr[Math.floor(Math.random()*arr.length)]; }
+
+const RESP={
+  price:[
+    "Pricing depends on trim, incentives, and what you're financing or leasing — those change often, so I don't want to quote you something that isn't accurate. Cameron can pull the real numbers for you fast: (828) 744-2906.",
+    "That one I'll hand off — exact pricing and payment numbers come from Cameron directly since they shift with rates and current offers. He's quick to respond at (828) 744-2906, or the form on this page works too.",
+    "Good question, and I want to give you a real answer instead of guessing — Cameron has the actual pricing in front of him. Text him at (828) 744-2906 and he'll get you a number same-day."
+  ],
+  sale:[
+    "Honda does run manufacturer incentives regularly, but what's actually active changes week to week and depends on the model and your qualifications. Cameron can tell you exactly what's live right now — (828) 744-2906.",
+    "I don't want to throw out numbers that aren't real, since current offers change often. Cameron always knows what's actually available this week — give him a call or text at (828) 744-2906.",
+    "There's usually something running, but I'd rather have Cameron confirm what actually applies to you right now than guess. He's easy to reach at (828) 744-2906."
+  ],
+  warranty:[
+    "Honda's New Vehicle Limited Warranty typically covers 3 years/36,000 miles bumper-to-bumper, with the Powertrain warranty extending to 5 years/60,000 miles. Certified Pre-Owned Hondas usually add extra years on top of that. Cameron can confirm exact coverage for a specific vehicle if you want.",
+    "Generally you're looking at 3yr/36k bumper-to-bumper and 5yr/60k powertrain on new Hondas, and CPO units get extended coverage. Exact terms can vary by vehicle, so Cameron can pull the specifics for whichever one you're eyeing."
+  ],
+  trade:[
+    "For a trade-in, Cameron will usually want to see the vehicle in person (or photos + mileage/condition info) to give you a real number — online estimators are often way off from what you'd actually get. Want me to have him reach out?",
+    "Trade-ins get appraised based on condition, mileage, and current market demand — Cameron handles those personally so you get an honest number, not a lowball online guess."
+  ],
+  safety:[
+    "Most current Honda models come with Honda Sensing® standard, which bundles things like collision mitigation braking, road departure mitigation, adaptive cruise control, and lane keeping assist. Exact features can vary by trim.",
+    "Honda Sensing® is Honda's suite of standard driver-assist safety tech across most of the lineup now — forward collision warning, automatic emergency braking, lane departure warning, and adaptive cruise are the core pieces."
+  ],
+  mpg:[
+    "Fuel economy varies a good bit by model — the hybrids (CR-V Hybrid, Accord Hybrid, Civic Hybrid) get the best numbers, often 40+ mpg combined, while the standard gas trims are still solid, generally in the 30s combined for sedans and high-20s to low-30s for SUVs. I can have Cameron pull exact EPA numbers for the trim you're considering.",
+  ],
+  hybrid:[
+    "Honda's hybrid lineup includes the Accord Hybrid, Civic Hybrid, and CR-V Hybrid right now — all use Honda's two-motor hybrid system, no plug-in required, and they drive pretty much like the gas versions just more efficient. Want me to have Cameron check what's in stock?"
+  ],
+  seats:[
+    "For seating — Civic and Accord are 5-passenger sedans, CR-V and HR-V are 5-passenger SUVs, Passport seats 5, while Pilot and Odyssey seat up to 8. Cargo space is best in Odyssey and Pilot if you need room for gear."
+  ],
+  hours:[
+    "For exact hours, directions, or the dealership address, Cameron can send that straight to you — text him at (828) 744-2906 and he'll get you sorted."
+  ],
+  testdrive:[
+    "I can't book the appointment myself, but Cameron can get you set up fast — call or text (828) 744-2906 with a day/time that works and he'll have something ready to drive.",
+    "Test drives are easy to set up — just tell Cameron what you want to drive and when at (828) 744-2906, and he'll have it pulled up front for you."
+  ],
+  greet:[
+    "Hey there! 👋 What can I help you find out about today — a specific model, financing, trade-in, or something else?"
+  ],
+  fallback:[
+    "I might not have the full answer on that one, but Cameron definitely will — text or call him at (828) 744-2906 and he'll take care of it personally.",
+    "Good question — I want to make sure you get a real, accurate answer rather than me guessing. Cameron's the best person for that: (828) 744-2906."
+  ]
+};
+
+function classify(t){
+  if(/\b(hi|hello|hey|sup|yo)\b/.test(t)) return 'greet';
+  if(/price|cost|how much|payment|msrp|apr|monthly|lease/.test(t)) return 'price';
+  if(/sale|deal|discount|incentive|special|promo|rebate|offer/.test(t)) return 'sale';
+  if(/warrant|coverage/.test(t)) return 'warranty';
+  if(/trade/.test(t)) return 'trade';
+  if(/safe|safety|sensing|airbag/.test(t)) return 'safety';
+  if(/mpg|gas mileage|fuel econom|efficient/.test(t)) return 'mpg';
+  if(/hybrid|electric|\bev\b|plug-?in/.test(t)) return 'hybrid';
+  if(/seat|row|passenger|cargo|space/.test(t)) return 'seats';
+  if(/hours|open|close|address|located|directions/.test(t)) return 'hours';
+  if(/test drive|come in|visit|appointment|schedule/.test(t)) return 'testdrive';
+  return 'fallback';
+}
+
+function addMsg(msgs,text){
+  msgs.innerHTML+=`<div class="msg a">${text}</div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function sc(){
+  const inp=document.getElementById('ci');
+  const msgs=document.getElementById('cm');
+  const txt=inp.value.trim();
+  if(!txt)return;
+  const lower=txt.toLowerCase();
+  inp.value='';
+  msgs.innerHTML+=`<div class="msg u">${txt}</div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+
+  const foundModel=detectModel(lower);
+  if(foundModel) chatMem.model=foundModel;
+
+  const cat=classify(lower);
+  const reply=pick(RESP[cat]);
+
+  setTimeout(()=>{
+    addMsg(msgs,reply);
+    // Send a natural human-style follow-up second bubble sometimes, instead of
+    // always stopping at one line — makes it feel like a real conversation.
+    if(cat==='price'||cat==='sale'){
+      setTimeout(()=>{
+        const followUps=chatMem.model
+          ? [`Want me to have him look specifically at the ${chatMem.model} for you?`,
+             `Should I let him know you're asking about the ${chatMem.model}?`]
+          : [`What model are you looking at, so he has that ready when he calls?`,
+             `Is there a specific vehicle you're comparing, so he can have numbers ready?`];
+        addMsg(msgs,pick(followUps));
+      },900);
+    } else if(cat==='mpg'||cat==='hybrid'||cat==='safety'||cat==='seats'||cat==='warranty'){
+      setTimeout(()=>{
+        addMsg(msgs,"Let me know if you want Cameron to check current inventory on that — he can text you what's actually on the lot.");
+      },900);
+    } else if(cat==='fallback'){
+      setTimeout(()=>{
+        addMsg(msgs,"In the meantime, feel free to browse what's in stock above, or just tell me a bit more about what you're looking for.");
+      },900);
+    }
+  },500);
+}
+</script>
+</body>
+</html>
